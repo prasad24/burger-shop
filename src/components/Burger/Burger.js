@@ -64,7 +64,7 @@ class Burger extends Component {
                     }
                     return grp;
                 });
-                selectedIngredients.push({title, name});
+                selectedIngredients.push({title, name, group});
                 this.setState({
                     selectedIngredients,
                     ingredients: updatedIngredients
@@ -73,11 +73,25 @@ class Burger extends Component {
         }
     }
 
+    removeIngredient(index, ingredient) {
+        const oldState = {...this.state};
+        oldState.selectedIngredients.splice(index, 1);
+        oldState.ingredients.map(item => {
+            if(item.group === ingredient.group) {
+                item.used = item.used - 1;
+            }
+            return item;
+        });
+        this.setState({
+            ...oldState
+        })
+    }
+
     render() {
         return (
             <div>
                 <h1>Build Your Burger</h1>
-                <Preview bread={this.state.bread} selectedIngredients={this.state.selectedIngredients}></Preview>
+                <Preview onRemove={(index, ingredient) => this.removeIngredient(index, ingredient)} bread={this.state.bread} selectedIngredients={this.state.selectedIngredients}></Preview>
                 <Ingredients onAdd={event => this.addIngredient(event)} ingredients={this.state.ingredients}></Ingredients>
             </div>
         )

@@ -15,7 +15,7 @@ function Preview(props) {
     }
 
     let allIngredients = props.selectedIngredients.map((ingredient, index) => {
-        return  <div key={index} className={[burgerClass.burger, burgerClass[ingredient.name]].join(' ')} title={ingredient.title}></div>;
+        return  <div key={index} value={index} onClick={() => props.onRemove(index, ingredient)} className={[burgerClass.burger, burgerClass[ingredient.name]].join(' ')} title={ingredient.title}></div>;
     });
 
     let defaultMessage = null;
