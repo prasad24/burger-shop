@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from  './App.css';
+import Burger from './components/Burger/Burger';
 
 class App extends Component {
+
   render() {
     return (
-      <div>
+      <div className={classes.App}>
+        <Burger></Burger>
       </div>
     );
   }

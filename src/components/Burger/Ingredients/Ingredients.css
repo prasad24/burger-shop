@@ -1,0 +1,16 @@
+.ingredient {
+    margin: 10px;
+    position: fixed;
+    bottom: 0;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    /* align-content: center; */
+}
+.group {
+    box-sizing: border-box;
+    border: 1px solid black;
+    width:50%;
+    background-color: darkgrey;
+}

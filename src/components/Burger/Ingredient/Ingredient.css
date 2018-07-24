@@ -1,0 +1,22 @@
+table {
+    margin:10px;
+}
+.ingredient {
+    width: 70%;
+    text-align: left;
+}
+.used {
+    text-align: center;
+    width: 10%;
+}
+.price {
+    text-align: right;
+    width: 10%;
+}
+.button {
+    text-align: right;
+    width: 10%;
+}
+button {
+    cursor: pointer;
+}
