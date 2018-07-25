@@ -1,6 +1,6 @@
 import React from 'react';
 import burgerClass from './Preview.css';
-import Aux from '../../../hoc/Auxi';
+import Aux from '../../hoc/Auxi';
 
 function formatCurrency(value, symbol) {
     return `${symbol}${value.toFixed(2.2)}`;

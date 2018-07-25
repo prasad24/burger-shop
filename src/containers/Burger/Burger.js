@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Preview from './Preview/Preview';
-import Ingredients from './Ingredients/Ingredients';
+import Preview from '../../components/Preview/Preview';
+import Ingredients from '../../components/Ingredients/Ingredients';
 
 class Burger extends Component {
 
