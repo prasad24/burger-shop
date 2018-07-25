@@ -7,6 +7,7 @@ class Burger extends Component {
     state = {
         bread: { name:"whitebread", title: 'White Bread', hasSeeds: false},
         selectedIngredients : [],
+        minPrice: 6.99,
         ingredients : [
             {
                 group: "Veggies", max:5, used:0,
@@ -44,11 +45,10 @@ class Burger extends Component {
     }
 
     addIngredient(event) {
-        const selectedIngredients = [...this.state.selectedIngredients];
-        const ingredients = [...this.state.ingredients];
+        const { selectedIngredients, ingredients } = this.state;
         const [group, name] = event.target.value.split('-');
-        const { title, hasSeeds } = ingredients.filter(item => item.group === group)[0]
-        .contents.filter(item => item.name === name)[0];
+        const { title, hasSeeds, price } = ingredients.filter(item => item.group === group)[0]
+                                                .contents.filter(item => item.name === name)[0];
         if(group === 'Breads') {
             this.setState({
                 bread: { name, title, hasSeeds}
@@ -64,7 +64,7 @@ class Burger extends Component {
                     }
                     return grp;
                 });
-                selectedIngredients.push({title, name, group});
+                selectedIngredients.push({title, name, group, price});
                 this.setState({
                     selectedIngredients,
                     ingredients: updatedIngredients
@@ -87,11 +87,15 @@ class Burger extends Component {
         })
     }
 
+    checkout() {
+        console.log(this.state.selectedIngredients);
+    }
+
     render() {
         return (
             <div>
                 <h1>Build Your Burger</h1>
-                <Preview onRemove={(index, ingredient) => this.removeIngredient(index, ingredient)} bread={this.state.bread} selectedIngredients={this.state.selectedIngredients}></Preview>
+                <Preview onCheckout={() => this.checkout()} onRemove={(index, ingredient) => this.removeIngredient(index, ingredient)} minPrice={this.state.minPrice} bread={this.state.bread} selectedIngredients={this.state.selectedIngredients}></Preview>
                 <Ingredients onAdd={event => this.addIngredient(event)} ingredients={this.state.ingredients}></Ingredients>
             </div>
         )
