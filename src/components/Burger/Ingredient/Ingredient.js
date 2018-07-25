@@ -7,8 +7,7 @@ function ingredient(props) {
         return (
             <tr key={item.name}>
                 <td className={ingredientClass.ingredient}>{item.title}</td>
-                {/* <td className={ingredientClass.used}>{item.used}</td>
-                <td className={ingredientClass.price}>${item.price}</td> */}
+                <td className={ingredientClass.price}>${item.price}</td>
                 <td className={ingredientClass.button}><button disabled={!props.enabled} value={[props.group,item.name].join('-')} onClick={props.onAdd}>Add</button></td>
             </tr>
         );
@@ -19,8 +18,7 @@ function ingredient(props) {
             <thead>
                 <tr>
                     <th className={ingredientClass.ingredient}>Ingredient</th>
-                    {/* <th>Count</th>
-                    <th>Price</th> */}
+                    <th>Price</th>
                     <th></th>
                 </tr>
             </thead>
